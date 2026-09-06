@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from '../ui/button'
-
+import { UserButton } from '@clerk/nextjs'
 const Header = ({ projectName = 'Post Editor', onPublish }) => {
   return (
     <div className="flex h-12 w-full items-center justify-between border-b border-gray-200 px-6 dark:border-gray-800">
@@ -12,7 +12,9 @@ const Header = ({ projectName = 'Post Editor', onPublish }) => {
         <span className="text-gray-300 dark:text-gray-700">•</span>
       </div>
 
-      <div>
+      <div className="flex items-center gap-3">
+        <UserButton />
+
         <Button size="sm" onClick={onPublish}>
           Publish
         </Button>

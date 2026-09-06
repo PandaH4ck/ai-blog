@@ -1,5 +1,7 @@
 'use client'
-import { Settings, FileText, StickyNote, BarChart2, Brush, Users } from 'lucide-react'
+
+import { Settings, FileText, StickyNote, BarChart2, Brush } from 'lucide-react'
+import { UserButton } from '@clerk/nextjs'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -30,10 +32,6 @@ const Sidebar = () => {
 
       <Button variant="outline" size="icon" className="sidebar-item">
         <Brush size={20} strokeWidth={1.5} />
-      </Button>
-
-      <Button variant="outline" size="icon" className="sidebar-item">
-        <Users size={20} strokeWidth={1.5} />
       </Button>
 
       <Dialog>
