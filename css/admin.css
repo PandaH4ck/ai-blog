@@ -1,0 +1,246 @@
+body:has(.admin-root) footer {
+  display: none !important;
+}
+.admin-root {
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  background: transparent;
+}
+
+.admin-root .app {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 80px);
+  overflow: hidden;
+}
+
+.admin-root .layout-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Сайдбар */
+.admin-root .sidebar-full {
+  width: 56px;
+  height: 100%;
+  border-right: 1px solid rgba(128, 128, 128, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 12px;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.admin-root .sidebar-item {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #71717a;
+  transition: all 0.15s ease;
+}
+
+.admin-root .sidebar-item:hover,
+.admin-root .sidebar-item.active {
+  background: rgba(128, 128, 128, 0.15);
+  color: inherit;
+}
+
+/* Внутренний тулбар */
+.admin-root .header-full {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+  flex-shrink: 0;
+}
+
+.admin-root .btn-primary {
+  background: #18181b;
+  color: #fafafa;
+  padding: 0 16px;
+  height: 32px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.dark .admin-root .btn-primary {
+  background: #fafafa;
+  color: #18181b;
+}
+
+.admin-root .btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* Область редактора */
+.admin-root .content-area {
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+  padding: 32px 24px 120px;
+}
+
+.admin-root .ai-editor {
+  max-width: 780px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.admin-root .editor-input-title {
+  width: 100%;
+  font-size: 32px;
+  font-weight: 700;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.admin-root .editor-input-tags {
+  width: 100%;
+  font-size: 14px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #a1a1aa;
+}
+
+.admin-root .editor-textarea {
+  width: 100%;
+  min-height: 400px;
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 16px;
+  line-height: 1.7;
+  font-family: inherit;
+}
+
+/* Плавающая панель AI */
+.admin-root .ai-toolbar {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(680px, calc(100% - 40px));
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(128, 128, 128, 0.25);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 8px 12px;
+  z-index: 50;
+}
+
+.dark .admin-root .ai-toolbar {
+  background: rgba(24, 24, 27, 0.85);
+}
+
+.admin-root .ai-toolbar__input-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-root .ai-toolbar__input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  resize: none;
+}
+
+.admin-root .ai-toolbar__send-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: none;
+  background: #18181b;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark .admin-root .ai-toolbar__send-btn {
+  background: #fafafa;
+  color: #18181b;
+}
+/* ===================================== */
+/*  Стилизация MDEditor под тему блога   */
+/* ===================================== */
+
+.admin-root .w-md-editor {
+  background-color: transparent !important;
+  border: 1px solid rgba(128, 128, 128, 0.2) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  overflow: hidden;
+}
+
+/* Тулбар с кнопками */
+.admin-root .w-md-editor-toolbar {
+  background-color: rgba(128, 128, 128, 0.05) !important;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.15) !important;
+  padding: 6px 12px !important;
+}
+
+.admin-root .w-md-editor-toolbar ul > li > button {
+  color: #71717a !important;
+  border-radius: 6px !important;
+  height: 28px !important;
+  width: 28px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.15s ease !important;
+}
+
+.admin-root .w-md-editor-toolbar ul > li > button:hover {
+  background-color: rgba(128, 128, 128, 0.15) !important;
+  color: #18181b !important;
+}
+
+.dark .admin-root .w-md-editor-toolbar ul > li > button:hover {
+  color: #fafafa !important;
+}
+
+/* Разделитель между сплит-окнами */
+.admin-root .w-md-editor-content {
+  background-color: transparent !important;
+}
+
+/* Поле ввода текста */
+.admin-root .w-md-editor-text-pre,
+.admin-root .w-md-editor-text-input {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+  padding: 16px !important;
+}
+
+/* Окно предпросмотра */
+.admin-root .w-md-editor-preview {
+  background-color: transparent !important;
+  box-shadow: inset 1px 0 0 rgba(128, 128, 128, 0.15) !important;
+  padding: 16px !important;
+}
