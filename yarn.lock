@@ -72,7 +72,7 @@
     "@algolia/requester-fetch" "5.57.0"
     "@algolia/requester-node-http" "5.57.0"
 
-"@algolia/client-search@5.57.0":
+"@algolia/client-search@>= 4.9.1 < 6", "@algolia/client-search@5.57.0":
   version "5.57.0"
   dependencies:
     "@algolia/client-common" "5.57.0"
@@ -132,7 +132,7 @@
 "@babel/compat-data@^7.28.6", "@babel/compat-data@^7.29.7":
   version "7.29.7"
 
-"@babel/core@^7.21.3":
+"@babel/core@^7.0.0", "@babel/core@^7.0.0-0", "@babel/core@^7.0.0-0 || ^8.0.0-0 <8.0.0", "@babel/core@^7.12.0", "@babel/core@^7.13.0", "@babel/core@^7.21.3", "@babel/core@^7.4.0 || ^8.0.0-0 <8.0.0":
   version "7.29.7"
   dependencies:
     "@babel/code-frame" "^7.29.7"
@@ -804,7 +804,7 @@
     "@babel/helper-string-parser" "^7.29.7"
     "@babel/helper-validator-identifier" "^7.29.7"
 
-"@citation-js/core@^0.7.21":
+"@citation-js/core@^0.7.0", "@citation-js/core@^0.7.21":
   version "0.7.21"
   dependencies:
     "@citation-js/date" "^0.5.0"
@@ -957,7 +957,7 @@
     "@docsearch/css" "3.9.0"
     algoliasearch "^5.14.2"
 
-"@effect-ts/core@^0.60.5":
+"@effect-ts/core@^0.60.2", "@effect-ts/core@^0.60.5":
   version "0.60.5"
   dependencies:
     "@effect-ts/system" "^0.57.5"
@@ -1293,6 +1293,45 @@
     "@jsonjoy.com/buffers" "17.67.0"
     "@jsonjoy.com/codegen" "17.67.0"
 
+"@libsql/client@^0.18.0":
+  version "0.18.0"
+  resolved "https://registry.npmjs.org/@libsql/client/-/client-0.18.0.tgz"
+  integrity sha512-zMCCo58vv7w27j7+cnt/GW+X6/Rih6cHZ86PKi0AxCMOqMfrVgG9OZ5lW2bDMJhSeOjsv2szH2nJF3A9l36UmA==
+  dependencies:
+    "@libsql/core" "^0.18.0"
+    "@libsql/hrana-client" "^0.10.0"
+    js-base64 "^3.7.5"
+    libsql "^0.5.28"
+    promise-limit "^2.7.0"
+
+"@libsql/core@^0.18.0":
+  version "0.18.0"
+  resolved "https://registry.npmjs.org/@libsql/core/-/core-0.18.0.tgz"
+  integrity sha512-N8RR2CIpcgtbKZnXs2KVpw2lJQfinUj3I56e7qRDRpK18Hty0Rr8nr00VmFb4R/DsqOanPB/TaP3+QAQLZeXMg==
+  dependencies:
+    js-base64 "^3.7.5"
+
+"@libsql/hrana-client@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.npmjs.org/@libsql/hrana-client/-/hrana-client-0.10.0.tgz"
+  integrity sha512-OoA4EMqRAC7kn7V2P6EQqRcpZf2W+AjsNIyCizBg339Tq/aMC7sRnzs3SklderhmQWAqEzvv8A2vhxVmWpkVvw==
+  dependencies:
+    "@libsql/isomorphic-ws" "^0.1.5"
+    js-base64 "^3.7.5"
+
+"@libsql/isomorphic-ws@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.npmjs.org/@libsql/isomorphic-ws/-/isomorphic-ws-0.1.5.tgz"
+  integrity sha512-DtLWIH29onUYR00i0GlQ3UdcTRC6EP4u9w/h9LxpUZJWRMARk6dQwZ6Jkd+QdwVpuAOrdxt18v0K2uIYR3fwFg==
+  dependencies:
+    "@types/ws" "^8.5.4"
+    ws "^8.13.0"
+
+"@libsql/win32-x64-msvc@0.5.29":
+  version "0.5.29"
+  resolved "https://registry.npmjs.org/@libsql/win32-x64-msvc/-/win32-x64-msvc-0.5.29.tgz"
+  integrity sha512-4/0CvEdhi6+KjMxMaVbFM2n2Z44escBRoEYpR+gZg64DdetzGnYm8mcNLcoySaDJZNaBd6wz5DNdgRmcI4hXcg==
+
 "@lit-labs/ssr-dom-shim@^1.5.0":
   version "1.6.0"
 
@@ -1345,6 +1384,11 @@
     unist-util-visit "^5.0.0"
     vfile "^6.0.0"
 
+"@neon-rs/load@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.npmjs.org/@neon-rs/load/-/load-0.0.4.tgz"
+  integrity sha512-kTPhdZyTQxB+2wpiRcFWrDcejc4JI6tkPuS7UZCG4l6Zvc5kU/gGQ/ozvHTh1XR5tS+UlfAfGuPajjzQjCiHCw==
+
 "@next/bundle-analyzer@15.5.12":
   version "15.5.12"
   dependencies:
@@ -1384,13 +1428,13 @@
   dependencies:
     "@opentelemetry/api" "^1.3.0"
 
-"@opentelemetry/api@^1.3.0", "@opentelemetry/api@^1.9.0":
+"@opentelemetry/api@^1.1.0", "@opentelemetry/api@^1.3.0", "@opentelemetry/api@^1.4.0", "@opentelemetry/api@^1.9.0", "@opentelemetry/api@>=1.0.0 <1.10.0", "@opentelemetry/api@>=1.3.0 <1.10.0", "@opentelemetry/api@>=1.4.0 <1.10.0":
   version "1.9.1"
 
 "@opentelemetry/context-async-hooks@1.30.1":
   version "1.30.1"
 
-"@opentelemetry/core@^1.30.1", "@opentelemetry/core@1.30.1":
+"@opentelemetry/core@^1.13.0", "@opentelemetry/core@^1.30.1", "@opentelemetry/core@1.30.1":
   version "1.30.1"
   dependencies:
     "@opentelemetry/semantic-conventions" "1.28.0"
@@ -1460,14 +1504,14 @@
     "@opentelemetry/core" "1.30.1"
     "@opentelemetry/resources" "1.30.1"
 
-"@opentelemetry/sdk-trace-base@^1.30.1", "@opentelemetry/sdk-trace-base@1.30.1":
+"@opentelemetry/sdk-trace-base@^1.13.0", "@opentelemetry/sdk-trace-base@^1.30.1", "@opentelemetry/sdk-trace-base@1.30.1":
   version "1.30.1"
   dependencies:
     "@opentelemetry/core" "1.30.1"
     "@opentelemetry/resources" "1.30.1"
     "@opentelemetry/semantic-conventions" "1.28.0"
 
-"@opentelemetry/sdk-trace-node@^1.30.1":
+"@opentelemetry/sdk-trace-node@^1.13.0", "@opentelemetry/sdk-trace-node@^1.30.1":
   version "1.30.1"
   dependencies:
     "@opentelemetry/context-async-hooks" "1.30.1"
@@ -1697,7 +1741,7 @@
     "@svgr/babel-plugin-transform-react-native-svg" "8.1.0"
     "@svgr/babel-plugin-transform-svg-component" "8.0.0"
 
-"@svgr/core@8.1.0":
+"@svgr/core@*", "@svgr/core@8.1.0":
   version "8.1.0"
   dependencies:
     "@babel/core" "^7.21.3"
@@ -1847,7 +1891,7 @@
 "@types/ms@*":
   version "2.1.0"
 
-"@types/node@>=13.7.0":
+"@types/node@*", "@types/node@>=13.7.0":
   version "26.4.0"
   dependencies:
     undici-types "~8.3.0"
@@ -1855,7 +1899,7 @@
 "@types/prismjs@^1.0.0":
   version "1.26.6"
 
-"@types/react@^19.2.13":
+"@types/react@*", "@types/react@^19.2.13", "@types/react@>= 16.8.0 < 20.0.0", "@types/react@>=18":
   version "19.2.18"
   dependencies:
     csstype "^3.2.2"
@@ -1872,6 +1916,13 @@
 "@types/unist@^2.0.0":
   version "2.0.11"
 
+"@types/ws@^8.5.4":
+  version "8.18.1"
+  resolved "https://registry.npmjs.org/@types/ws/-/ws-8.18.1.tgz"
+  integrity sha512-ThVF6DCVhA8kUGy+aazFQ4kXQ7E1Ty7A3ypFOe0IcJV8O/M511G99AW24irKrW56Wt44yG9+ij8FaqoBGkuBXg==
+  dependencies:
+    "@types/node" "*"
+
 "@typescript-eslint/eslint-plugin@^5.4.2 || ^6.0.0 || ^7.0.0 || ^8.0.0", "@typescript-eslint/eslint-plugin@^8.54.0":
   version "8.69.0"
   dependencies:
@@ -1884,7 +1935,7 @@
     natural-compare "^1.4.0"
     ts-api-utils "^2.5.0"
 
-"@typescript-eslint/parser@^5.4.2 || ^6.0.0 || ^7.0.0 || ^8.0.0", "@typescript-eslint/parser@^8.54.0":
+"@typescript-eslint/parser@^5.4.2 || ^6.0.0 || ^7.0.0 || ^8.0.0", "@typescript-eslint/parser@^8.54.0", "@typescript-eslint/parser@^8.69.0":
   version "8.69.0"
   dependencies:
     "@typescript-eslint/scope-manager" "8.69.0"
@@ -1996,7 +2047,7 @@ acorn-walk@^8.0.0:
   dependencies:
     acorn "^8.11.0"
 
-acorn@^8.0.0, acorn@^8.0.4, acorn@^8.11.0, acorn@^8.15.0:
+"acorn@^6.0.0 || ^7.0.0 || ^8.0.0", acorn@^8.0.0, acorn@^8.0.4, acorn@^8.11.0, acorn@^8.15.0:
   version "8.18.0"
 
 ajv@^6.14.0:
@@ -2007,7 +2058,7 @@ ajv@^6.14.0:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-algoliasearch@^5.14.2:
+algoliasearch@^5.14.2, "algoliasearch@>= 4.9.1 < 6":
   version "5.57.0"
   dependencies:
     "@algolia/abtesting" "1.23.0"
@@ -2244,7 +2295,7 @@ braces@^3.0.3, braces@~3.0.2:
   dependencies:
     fill-range "^7.1.1"
 
-browserslist@^4.24.0, browserslist@^4.28.7:
+browserslist@^4.24.0, browserslist@^4.28.7, "browserslist@>= 4.21.0":
   version "4.28.8"
   dependencies:
     baseline-browser-mapping "^2.11.12"
@@ -2612,6 +2663,11 @@ dequal@^2.0.0, dequal@2.0.3:
 detect-libc@^2.0.3, detect-libc@^2.1.2:
   version "2.1.2"
 
+detect-libc@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.npmjs.org/detect-libc/-/detect-libc-2.0.2.tgz"
+  integrity sha512-UX6sGumvvqSaXgdKGUsgZWqcUyIXZ/vZTrlRT/iobiKhGL0zL4d3osHj3uqllWJK+i+sixDS/3COVEOFbupFyw==
+
 detect-node-es@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npmjs.org/detect-node-es/-/detect-node-es-1.1.0.tgz"
@@ -2842,7 +2898,7 @@ esast-util-from-js@^2.0.0:
     esast-util-from-estree "^2.0.0"
     vfile-message "^4.0.0"
 
-esbuild@>=0.17, esbuild@0.27.3:
+esbuild@*, esbuild@>=0.14.0, esbuild@>=0.17, esbuild@0.*, esbuild@0.27.3:
   version "0.27.3"
   optionalDependencies:
     "@esbuild/aix-ppc64" "0.27.3"
@@ -2895,7 +2951,7 @@ eslint-config-next@15.5.12:
     eslint-plugin-react "^7.37.0"
     eslint-plugin-react-hooks "^5.0.0"
 
-eslint-config-prettier@^10.1.8:
+eslint-config-prettier@^10.1.8, "eslint-config-prettier@>= 7.0.0 <10.0.0 || >=10.1.0":
   version "10.1.8"
 
 eslint-import-resolver-node@^0.3.6, eslint-import-resolver-node@^0.3.9:
@@ -2921,7 +2977,7 @@ eslint-module-utils@^2.12.1:
   dependencies:
     debug "^3.2.7"
 
-eslint-plugin-import@^2.31.0:
+eslint-plugin-import@*, eslint-plugin-import@^2.31.0:
   version "2.32.0"
   dependencies:
     "@rtsao/scc" "^1.1.0"
@@ -3009,7 +3065,7 @@ eslint-visitor-keys@^4.2.1:
 eslint-visitor-keys@^5.0.0:
   version "5.0.1"
 
-eslint@^9.18.0:
+eslint@*, "eslint@^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8 || ^9", "eslint@^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9", "eslint@^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7", "eslint@^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0", "eslint@^6.0.0 || ^7.0.0 || >=8.0.0", "eslint@^7.23.0 || ^8.0.0 || ^9.0.0", "eslint@^8.57.0 || ^9.0.0 || ^10.0.0", eslint@^9.18.0, eslint@>=7.0.0, eslint@>=8.0.0:
   version "9.39.5"
   dependencies:
     "@eslint-community/eslint-utils" "^4.8.0"
@@ -3909,8 +3965,13 @@ iterator.prototype@^1.1.5:
     has-symbols "^1.1.0"
     set-function-name "^2.0.2"
 
-jiti@^2.7.0:
+jiti@*, jiti@^2.7.0:
   version "2.7.0"
+
+js-base64@^3.7.5:
+  version "3.9.3"
+  resolved "https://registry.npmjs.org/js-base64/-/js-base64-3.9.3.tgz"
+  integrity sha512-uwYQp+VJ38FVvtim6qNbit6e9uT6dwWQ4Y1+H9TxhW5hcHjpHwoxlR0nMpqUmIFOmu4VqMxwdJA88gIVuZJQ/g==
 
 js-cookie@3.0.7:
   version "3.0.7"
@@ -4003,6 +4064,24 @@ levn@^0.4.1:
   dependencies:
     prelude-ls "^1.2.1"
     type-check "~0.4.0"
+
+libsql@^0.5.28:
+  version "0.5.29"
+  resolved "https://registry.npmjs.org/libsql/-/libsql-0.5.29.tgz"
+  integrity sha512-8lMP8iMgiBzzoNbAPQ59qdVcj6UaE/Vnm+fiwX4doX4Narook0a4GPKWBEv+CR8a1OwbfkgL18uBfBjWdF0Fzg==
+  dependencies:
+    "@neon-rs/load" "^0.0.4"
+    detect-libc "2.0.2"
+  optionalDependencies:
+    "@libsql/darwin-arm64" "0.5.29"
+    "@libsql/darwin-x64" "0.5.29"
+    "@libsql/linux-arm-gnueabihf" "0.5.29"
+    "@libsql/linux-arm-musleabihf" "0.5.29"
+    "@libsql/linux-arm64-gnu" "0.5.29"
+    "@libsql/linux-arm64-musl" "0.5.29"
+    "@libsql/linux-x64-gnu" "0.5.29"
+    "@libsql/linux-x64-musl" "0.5.29"
+    "@libsql/win32-x64-msvc" "0.5.29"
 
 lightningcss-win32-x64-msvc@1.32.0:
   version "1.32.0"
@@ -4747,7 +4826,7 @@ next-themes@^0.3.0:
 next-themes@^0.4.6:
   version "0.4.6"
 
-next@15.5.12:
+"next@^15.2.8 || ^15.3.8 || ^15.4.10 || ^15.5.9 || ^15.6.0-0 || ^16.0.10 || ^16.1.0-0", next@>=12.0.0, next@>=13.0.0, next@15.5.12:
   version "15.5.12"
   dependencies:
     "@next/env" "15.5.12"
@@ -4965,10 +5044,10 @@ picocolors@^1.0.0, picocolors@^1.1.1:
 picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.3.1:
   version "2.3.2"
 
-picomatch@^4.0.3:
+"picomatch@^3 || ^4", picomatch@^4.0.4:
   version "4.0.7"
 
-picomatch@^4.0.4:
+picomatch@^4.0.3:
   version "4.0.7"
 
 pliny@0.4.1:
@@ -5022,7 +5101,7 @@ prettier-linter-helpers@^1.0.1:
 prettier-plugin-tailwindcss@^0.7.2:
   version "0.7.4"
 
-prettier@^3.8.1:
+prettier@^3.0, prettier@^3.8.1, prettier@>=3.0.0:
   version "3.9.6"
 
 probe-image-size@^7.2.3:
@@ -5034,6 +5113,11 @@ probe-image-size@^7.2.3:
 
 process-nextick-args@~2.0.0:
   version "2.0.1"
+
+promise-limit@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.npmjs.org/promise-limit/-/promise-limit-2.7.0.tgz"
+  integrity sha512-7nJ6v5lnJsXwGprnGXga4wx6d1POjvi5Qmf1ivTRxTjH4Z/9Czja/UCMLVmB9N93GeWOU93XaFaEt6jbuoagNw==
 
 prop-types@^15.8.1:
   version "15.8.1"
@@ -5085,7 +5169,7 @@ react-aria@^3.48.0:
     react-stately "3.50.0"
     use-sync-external-store "^1.6.0"
 
-react-dom@19.2.4:
+"react-dom@^16 || ^17 || ^18 || ^19", "react-dom@^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.8 || ^17 || ^18", "react-dom@^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc", "react-dom@^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc", "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react-dom@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1", "react-dom@^17.0.2 || ^18 || ^19 || ^19.0.0-rc", "react-dom@^18 || ^19 || ^19.0.0-rc", "react-dom@^18.0.0 || ~19.0.3 || ~19.1.4 || ~19.2.3 || ~19.3.0-0", "react-dom@^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0", "react-dom@>= 16.8.0 < 20.0.0", react-dom@>=16.8.0, react-dom@19.2.4:
   version "19.2.4"
   dependencies:
     scheduler "^0.27.0"
@@ -5093,7 +5177,7 @@ react-dom@19.2.4:
 react-is@^16.13.1:
   version "16.13.1"
 
-react-markdown@~10.1.0:
+react-markdown@^10.1.0, react-markdown@~10.1.0:
   version "10.1.0"
   resolved "https://registry.npmjs.org/react-markdown/-/react-markdown-10.1.0.tgz"
   integrity sha512-qKxVopLT/TyA6BX3Ue5NwabOsAzm0Q7kAPwq6L+wWDwisYs7R8vZ0nRXqq6rkueboxpkjvLGU9fWifiX/ZZFxQ==
@@ -5161,7 +5245,7 @@ react-virtual@^2.8.2:
   dependencies:
     "@reach/observe-rect" "^1.1.0"
 
-react@19.2.4:
+"react@^16 || ^17 || ^18 || ^19", "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@^16.6.3 || ^17.0.0", "react@^16.8 || ^17 || ^18", "react@^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc", "react@^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc", "react@^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc", "react@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1", "react@^17.0.2 || ^18 || ^19 || ^19.0.0-rc", "react@^18 || ^19 || ^19.0.0-rc", "react@^18.0.0 || ~19.0.3 || ~19.1.4 || ~19.2.3 || ~19.3.0-0", "react@^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0", react@^19.2.4, "react@>= 16.8.0 < 20.0.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0 || ^19.0.0-0", react@>=16.8.0, react@>=18, react@19.2.4:
   version "19.2.4"
 
 readable-stream@^2.0.5:
@@ -5634,6 +5718,8 @@ remark-frontmatter@^5.0.0:
 
 remark-gfm@^4.0.1, remark-gfm@~4.0.0:
   version "4.0.1"
+  resolved "https://registry.npmjs.org/remark-gfm/-/remark-gfm-4.0.1.tgz"
+  integrity sha512-1quofZ2RQ9EWdeN34S79+KExV1764+wCUGop5CPL1WGdD0ocPpu91lzPGbwWMECpEpd42kJGQwzRfyov9j4yNg==
   dependencies:
     "@types/mdast" "^4.0.0"
     mdast-util-gfm "^3.0.0"
@@ -5800,6 +5886,11 @@ sax@^1.2.4, sax@^1.5.0:
 
 scheduler@^0.27.0:
   version "0.27.0"
+
+"search-insights@>= 1 < 3":
+  version "2.17.3"
+  resolved "https://registry.npmjs.org/search-insights/-/search-insights-2.17.3.tgz"
+  integrity sha512-RQPdCYTa8A68uM2jwxoY842xDhvx3E5LFL1LxvxCNMev4o5mLuokczhzjAgGwUZBAmOKZknArSxLKmXtIi2AxQ==
 
 section-matter@^1.0.0:
   version "1.0.0"
@@ -6181,7 +6272,7 @@ tailwind-merge@^3.6.0:
   resolved "https://registry.npmjs.org/tailwind-merge/-/tailwind-merge-3.6.0.tgz"
   integrity sha512-uxL7qAVQriqRQPAyK3pj66VqskWqoZ37PW94jwOTwNfq/z9oyu1V+eqrZqtR2+fCiXdYOZe/Modt8GtvqNzu+w==
 
-tailwindcss@^4.1.18, tailwindcss@4.3.3:
+tailwindcss@^4.1.18, "tailwindcss@>=3.0.0 || >= 3.0.0-alpha.1 || >= 4.0.0-alpha.20 || >= 4.0.0-beta.1", "tailwindcss@>=3.0.0 || >=4.0.0 || insiders", tailwindcss@4.3.3:
   version "4.3.3"
 
 tapable@^2.3.3:
@@ -6245,7 +6336,7 @@ tsconfig-paths@^3.15.0:
     minimist "^1.2.6"
     strip-bom "^3.0.0"
 
-tslib@^2.0.0, tslib@^2.0.3, tslib@^2.1.0, tslib@^2.4.1, tslib@^2.8.0, tslib@2.8.1:
+tslib@^2, tslib@^2.0.0, tslib@^2.0.3, tslib@^2.1.0, tslib@^2.4.1, tslib@^2.8.0, tslib@2, tslib@2.8.1:
   version "2.8.1"
 
 typanion@^3.12.1, typanion@^3.8.0:
@@ -6296,7 +6387,7 @@ typed-array-length@^1.0.7:
     possible-typed-array-names "^1.1.0"
     reflect.getprototypeof "^1.0.10"
 
-typescript@^5.9.3:
+typescript@^5.9.3, typescript@>=3.3.1, typescript@>=4.8.4, "typescript@>=4.8.4 <6.1.0", typescript@>=4.9.5:
   version "5.9.3"
 
 uglify-js@^3.0.0:
@@ -6602,6 +6693,11 @@ wrappy@1:
 
 ws@^7.3.1:
   version "7.5.13"
+
+ws@^8.13.0:
+  version "8.21.3"
+  resolved "https://registry.npmjs.org/ws/-/ws-8.21.3.tgz"
+  integrity sha512-201TZ/kPWxoPr/OKWjquZR1SWKXcvxdH+e1xrx89b3YbmzLMFCLfnaG1HFIgWzJOEWZ7MvpK++odZufgYR50Rw==
 
 xtend@~4.0.1:
   version "4.0.2"

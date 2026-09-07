@@ -1,17 +1,60 @@
-import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
-import { allBlogs } from 'contentlayer/generated'
 import { genPageMetadata } from 'app/seo'
 import ListLayout from '@/layouts/ListLayoutWithTags'
+import { db } from '../../lib/db'
+
+export const dynamic = 'force-dynamic'
 
 const POSTS_PER_PAGE = 5
 
 export const metadata = genPageMetadata({ title: 'Blog' })
 
 export default async function BlogPage(props: { searchParams: Promise<{ page: string }> }) {
-  const posts = allCoreContent(sortPosts(allBlogs))
-  const pageNumber = 1
-  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE)
-  const initialDisplayPosts = posts.slice(0, POSTS_PER_PAGE * pageNumber)
+  const searchParams = await props.searchParams
+  const pageNumber = parseInt(searchParams?.page || '1', 10)
+
+  let posts: any[] = []
+
+  try {
+    // 1. Создаем таблицу автоматически, если базу только что удалили
+    await db.execute(`
+      CREATE TABLE IF NOT EXISTS posts (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        title TEXT NOT NULL,
+        slug TEXT UNIQUE NOT NULL,
+        tags TEXT,
+        content TEXT NOT NULL,
+        published INTEGER DEFAULT 1,
+        createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+      );
+    `)
+
+    // 2. Теперь SELECT гарантированно не упадет
+    const result = await db.execute(
+      'SELECT * FROM posts WHERE published = 1 ORDER BY createdAt DESC'
+    )
+
+    posts = result.rows.map((post: any) => ({
+      path: `blog/${post.slug}`,
+      slug: post.slug,
+      date: post.createdAt,
+      title: post.title,
+      summary: post.summary || (post.content ? String(post.content).slice(0, 160) + '...' : ''),
+      tags: post.tags
+        ? String(post.tags)
+            .split(',')
+            .map((t: string) => t.trim())
+            .filter(Boolean)
+        : [],
+    }))
+  } catch (error) {
+    console.error('Ошибка базы данных:', error)
+  }
+
+  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE) || 1
+  const initialDisplayPosts = posts.slice(
+    POSTS_PER_PAGE * (pageNumber - 1),
+    POSTS_PER_PAGE * pageNumber
+  )
   const pagination = {
     currentPage: pageNumber,
     totalPages: totalPages,
