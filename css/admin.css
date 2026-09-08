@@ -21,7 +21,7 @@ body:has(.admin-root) footer {
   position: relative;
 }
 
-/* Сайдбар */
+/* Sidebar */
 .admin-root .sidebar-full {
   width: 56px;
   height: 100%;
@@ -54,7 +54,7 @@ body:has(.admin-root) footer {
   color: inherit;
 }
 
-/* Внутренний тулбар */
+/* Inner toolbar */
 .admin-root .header-full {
   height: 48px;
   display: flex;
@@ -87,7 +87,7 @@ body:has(.admin-root) footer {
   opacity: 0.9;
 }
 
-/* Область редактора */
+/* Editor area */
 .admin-root .content-area {
   flex: 1;
   overflow-y: auto;
@@ -133,7 +133,7 @@ body:has(.admin-root) footer {
   font-family: inherit;
 }
 
-/* Плавающая панель AI */
+/* Floating AI panel */
 .admin-root .ai-toolbar {
   position: fixed;
   bottom: 24px;
@@ -186,7 +186,7 @@ body:has(.admin-root) footer {
   color: #18181b;
 }
 /* ===================================== */
-/*  Стилизация MDEditor под тему блога   */
+/* MDEditor styling for the blog theme */
 /* ===================================== */
 
 .admin-root .w-md-editor {
@@ -197,7 +197,7 @@ body:has(.admin-root) footer {
   overflow: hidden;
 }
 
-/* Тулбар с кнопками */
+/* Button toolbar */
 .admin-root .w-md-editor-toolbar {
   background-color: rgba(128, 128, 128, 0.05) !important;
   border-bottom: 1px solid rgba(128, 128, 128, 0.15) !important;
@@ -224,12 +224,12 @@ body:has(.admin-root) footer {
   color: #fafafa !important;
 }
 
-/* Разделитель между сплит-окнами */
+/* Divider between split panes */
 .admin-root .w-md-editor-content {
   background-color: transparent !important;
 }
 
-/* Поле ввода текста */
+/* Text input */
 .admin-root .w-md-editor-text-pre,
 .admin-root .w-md-editor-text-input {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
@@ -238,7 +238,7 @@ body:has(.admin-root) footer {
   padding: 16px !important;
 }
 
-/* Окно предпросмотра */
+/* Preview pane */
 .admin-root .w-md-editor-preview {
   background-color: transparent !important;
   box-shadow: inset 1px 0 0 rgba(128, 128, 128, 0.15) !important;

@@ -101,7 +101,7 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
 
   return (
     <Layout content={mainContent} authorDetails={authorDetails} next={next} prev={prev}>
-      {/* Класс prose отвечает за красивые отступы, шрифты и оформление Markdown в Tailwind */}
+      {/* The prose class provides Markdown spacing, typography, and styling in Tailwind. */}
       <div className="prose dark:prose-invert max-w-none pt-10 pb-8 text-gray-800 dark:text-gray-200">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
       </div>

@@ -67,7 +67,7 @@ export default function ListLayoutWithTags({
 }: ListLayoutProps) {
   const pathname = usePathname()
 
-  // Динамически считаем теги и количество статей прямо из переданных постов базы
+  // Count tags dynamically from the posts provided by the database.
   const tagCounts: Record<string, number> = {}
   posts.forEach((post) => {
     if (post.tags && Array.isArray(post.tags)) {
@@ -82,10 +82,10 @@ export default function ListLayoutWithTags({
 
   const sortedTags = Object.keys(tagCounts).sort((a, b) => tagCounts[b] - tagCounts[a])
 
-  // Если передан initialDisplayPosts (даже пустой массив), используем его
+  // Use initialDisplayPosts when provided, including an empty array.
   const displayPosts = initialDisplayPosts !== undefined ? initialDisplayPosts : posts
 
-  // Извлекаем текущий выбранный тег из URL (например: /tags/optimization)
+  // Read the currently selected tag from the URL, for example /tags/optimization.
   const currentTag = pathname.startsWith('/tags/')
     ? decodeURI(pathname.split('/tags/')[1]?.split('/')[0] || '')
         .trim()
@@ -115,10 +115,10 @@ export default function ListLayoutWithTags({
               )}
               <ul>
                 {sortedTags.map((t) => {
-                  // Приводим тег из списка к такому же формату, как в ссылке
+                  // Normalize the tag to the format used in the link.
                   const tagSlug = slug(t).toLowerCase()
 
-                  // Проверяем: совпадает ли тег из URL с текущим тегом в цикле
+                  // Check whether the URL tag matches the current tag.
                   const isSelected = currentTag === tagSlug || currentTag === t.trim().toLowerCase()
 
                   return (
@@ -142,9 +142,7 @@ export default function ListLayoutWithTags({
           </div>
           <div className="flex-1">
             {displayPosts.length === 0 ? (
-              <p className="py-8 text-gray-500 dark:text-gray-400">
-                Статей с таким тегом пока нет.
-              </p>
+              <p className="py-8 text-gray-500 dark:text-gray-400">No posts with this tag yet.</p>
             ) : (
               <ul>
                 {displayPosts.map((post) => {

@@ -15,7 +15,7 @@ export default async function BlogPage(props: { searchParams: Promise<{ page: st
   let posts: any[] = []
 
   try {
-    // 1. Создаем таблицу автоматически, если базу только что удалили
+    // 1. Create the table automatically if the database was just removed.
     await db.execute(`
       CREATE TABLE IF NOT EXISTS posts (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -28,7 +28,7 @@ export default async function BlogPage(props: { searchParams: Promise<{ page: st
       );
     `)
 
-    // 2. Теперь SELECT гарантированно не упадет
+    // 2. The SELECT query can now run safely.
     const result = await db.execute(
       'SELECT * FROM posts WHERE published = 1 ORDER BY createdAt DESC'
     )
@@ -47,7 +47,7 @@ export default async function BlogPage(props: { searchParams: Promise<{ page: st
         : [],
     }))
   } catch (error) {
-    console.error('Ошибка базы данных:', error)
+    console.error('Database error:', error)
   }
 
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE) || 1

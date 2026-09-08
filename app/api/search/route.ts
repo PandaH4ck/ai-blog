@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic'
 
 export async function GET() {
   try {
-    // 1. Статьи из Markdown-файлов (Contentlayer)
+    // 1. Posts from Markdown files (Contentlayer).
     const filePosts = allBlogs.map((post) => {
       const rawText = post.body?.raw || ''
       const url = `/${post.path}`
@@ -15,10 +15,10 @@ export async function GET() {
         id: post.slug,
         name: post.title || 'Untitled',
         keywords: `${post.summary || ''} ${rawText} ${(post.tags || []).join(' ')}`,
-        section: 'Статьи',
+        section: 'Posts',
         perform: () => (window.location.href = url),
         href: url,
-        // Для обратной совместимости со старыми версиями Pliny:
+        // Preserve compatibility with older Pliny versions.
         title: post.title,
         path: url,
         summary: post.summary || '',
@@ -27,7 +27,7 @@ export async function GET() {
       }
     })
 
-    // 2. Статьи из базы данных SQLite
+    // 2. Posts from the SQLite database.
     let dbPosts: any[] = []
     try {
       const result = await db.execute('SELECT * FROM posts ORDER BY id DESC')
@@ -47,10 +47,10 @@ export async function GET() {
           id: postSlug,
           name: post.title || 'Untitled',
           keywords: `${summaryText} ${contentText} ${rawTags.join(' ')}`,
-          section: 'Статьи',
+          section: 'Posts',
           perform: () => (window.location.href = url),
           href: url,
-          // Совместимость:
+          // Compatibility fields.
           title: post.title,
           path: url,
           summary: summaryText,
@@ -64,7 +64,7 @@ export async function GET() {
 
     return NextResponse.json([...dbPosts, ...filePosts])
   } catch (error) {
-    console.error('Ошибка в поиске /api/search:', error)
+    console.error('Search error in /api/search:', error)
     return NextResponse.json([])
   }
 }

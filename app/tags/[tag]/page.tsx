@@ -29,7 +29,7 @@ export default async function TagPage(props: { params: Promise<{ tag: string }> 
   let filteredPosts: any[] = []
 
   try {
-    // 1. Достаем ВСЕ посты из базы данных для сайдбара
+    // 1. Read all posts for the sidebar.
     const result = await db.execute(
       'SELECT id, title, slug, tags, content, createdAt FROM posts WHERE published = 1 OR published IS NULL ORDER BY createdAt DESC'
     )
@@ -48,7 +48,7 @@ export default async function TagPage(props: { params: Promise<{ tag: string }> 
       path: `blog/${post.slug}`,
     }))
 
-    // 2. Отбираем только статьи с текущим тегом
+    // 2. Keep only posts with the current tag.
     filteredPosts = allPosts.filter((post) =>
       post.tags.some((t: string) => {
         const currentTagSlug = slug(t)
@@ -58,7 +58,7 @@ export default async function TagPage(props: { params: Promise<{ tag: string }> 
       })
     )
   } catch (error) {
-    console.error('Ошибка загрузки постов по тегу:', error)
+    console.error('Failed to load posts for the tag:', error)
   }
 
   const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE) || 1

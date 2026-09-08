@@ -1,12 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import '../../css/admin.css' // Вернули твои стили!
+import '../../css/admin.css'
 
 import Header from '../../components/admin/Header'
 import Sidebar from '../../components/admin/Sidebar'
 import AiEditor from '../../components/admin/AiEditor'
-import AiPromptBox from '../../components/admin/AiPromptBox' // Вернули панель промпта!
+import AiPromptBox from '../../components/admin/AiPromptBox'
 
 export default function EditorPage() {
   const [activeTab, setActiveTab] = useState('posts')
@@ -18,10 +18,9 @@ export default function EditorPage() {
     content: '',
   })
 
-  // Новая функция сохранения в SQLite
   const handlePublish = async () => {
     if (!articleData.title.trim() || !articleData.content.trim()) {
-      alert('Введи заголовок и текст статьи!')
+      alert('Enter a post title and content!')
       return
     }
 
@@ -35,10 +34,9 @@ export default function EditorPage() {
 
       const data = await res.json()
 
-      if (!res.ok) throw new Error(data.error || 'Ошибка публикации')
+      if (!res.ok) throw new Error(data.error || 'Publishing failed')
 
-      alert('Отлично! Статья сохранена в базу данных.')
-      // Очищаем форму, возвращая твои дефолтные теги
+      alert('Success! The post was saved to the database.')
       setArticleData({ title: '', tags: 'ai, nextjs', summary: '', content: '' })
     } catch (err) {
       alert(err.message)
@@ -50,17 +48,14 @@ export default function EditorPage() {
   return (
     <div className="admin-root">
       <div className="app">
-        {/* Вернули твоё название проекта и подключили новую функцию */}
         <Header projectName="PandaH4ck Admin" onPublish={handlePublish} />
 
         <div className="layout-body">
-          {/* Вернули твои пропсы в сайдбар */}
           <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
 
           <div className="content-area">
             <AiEditor articleData={articleData} setArticleData={setArticleData} />
 
-            {/* Панель ввода на месте */}
             <AiPromptBox />
           </div>
         </div>

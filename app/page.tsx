@@ -1,19 +1,19 @@
 import { db } from '../lib/db'
 import Main from './Main'
 
-// Отключаем жесткий кеш, чтобы новые статьи из админки сразу появлялись на главной
+// Disable the hard cache so new admin posts appear on the home page immediately.
 export const dynamic = 'force-dynamic'
 
 export default async function Page() {
   let posts: any[] = []
 
   try {
-    // 1. Достаем опубликованные статьи ТОЛЬКО из SQLite
+    // 1. Read published posts only from SQLite.
     const result = await db.execute(
       'SELECT id, title, slug, tags, content, createdAt FROM posts WHERE published = 1 ORDER BY createdAt DESC'
     )
 
-    // 2. Преобразуем строки из базы в формат, который ожидает твой Main
+    // 2. Transform database rows into the format expected by Main.
     posts = result.rows.map((post: any) => ({
       slug: post.slug,
       date: post.createdAt,
@@ -28,9 +28,8 @@ export default async function Page() {
       path: `blog/${post.slug}`,
     }))
   } catch (error) {
-    console.error('Ошибка загрузки постов для главной страницы:', error)
+    console.error('Failed to load posts for the home page:', error)
   }
 
-  // Твой оригинальный фронтенд без единого изменения в дизайне
   return <Main posts={posts} />
 }
