@@ -3,8 +3,6 @@
 import { usePathname } from 'next/navigation'
 import { slug } from 'github-slugger'
 import { formatDate } from 'pliny/utils/formatDate'
-import { CoreContent } from 'pliny/utils/contentlayer'
-import type { Blog } from 'contentlayer/generated'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
@@ -64,7 +62,7 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
 export default function ListLayoutWithTags({
   posts,
   title,
-  initialDisplayPosts = [],
+  initialDisplayPosts,
   pagination,
 }: ListLayoutProps) {
   const pathname = usePathname()
@@ -83,7 +81,16 @@ export default function ListLayoutWithTags({
   })
 
   const sortedTags = Object.keys(tagCounts).sort((a, b) => tagCounts[b] - tagCounts[a])
-  const displayPosts = initialDisplayPosts.length > 0 ? initialDisplayPosts : posts
+
+  // Если передан initialDisplayPosts (даже пустой массив), используем его
+  const displayPosts = initialDisplayPosts !== undefined ? initialDisplayPosts : posts
+
+  // Извлекаем текущий выбранный тег из URL (например: /tags/optimization)
+  const currentTag = pathname.startsWith('/tags/')
+    ? decodeURI(pathname.split('/tags/')[1]?.split('/')[0] || '')
+        .trim()
+        .toLowerCase()
+    : null
 
   return (
     <>
@@ -108,11 +115,21 @@ export default function ListLayoutWithTags({
               )}
               <ul>
                 {sortedTags.map((t) => {
+                  // Приводим тег из списка к такому же формату, как в ссылке
+                  const tagSlug = slug(t).toLowerCase()
+
+                  // Проверяем: совпадает ли тег из URL с текущим тегом в цикле
+                  const isSelected = currentTag === tagSlug || currentTag === t.trim().toLowerCase()
+
                   return (
                     <li key={t} className="my-3">
                       <Link
-                        href={`/tags/${slug(t)}`}
-                        className="hover:text-primary-500 dark:hover:text-primary-500 px-3 py-2 text-sm font-medium text-gray-500 uppercase dark:text-gray-300"
+                        href={`/tags/${tagSlug}`}
+                        className={`inline-block px-3 py-2 text-sm uppercase transition-colors ${
+                          isSelected
+                            ? 'text-primary-500 dark:text-primary-400 font-bold'
+                            : 'hover:text-primary-500 dark:hover:text-primary-500 font-medium text-gray-500 dark:text-gray-300'
+                        }`}
                         aria-label={`View posts tagged ${t}`}
                       >
                         {`${t} (${tagCounts[t]})`}
@@ -124,40 +141,46 @@ export default function ListLayoutWithTags({
             </div>
           </div>
           <div className="flex-1">
-            <ul>
-              {displayPosts.map((post) => {
-                const { path, date, title, summary, tags } = post
-                return (
-                  <li key={path} className="py-5">
-                    <article className="flex flex-col space-y-2 xl:space-y-0">
-                      <dl>
-                        <dt className="sr-only">Published on</dt>
-                        <dd className="text-base leading-6 font-medium text-gray-500 dark:text-gray-400">
-                          <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
-                        </dd>
-                      </dl>
-                      <div className="space-y-3">
-                        <div>
-                          <h2 className="text-2xl leading-8 font-bold tracking-tight">
-                            <Link href={`/${path}`} className="text-gray-900 dark:text-gray-100">
-                              {title}
-                            </Link>
-                          </h2>
-                          <div className="flex flex-wrap gap-2 pt-1">
-                            {tags?.map((tag: string) => (
-                              <Tag key={tag} text={tag} />
-                            ))}
+            {displayPosts.length === 0 ? (
+              <p className="py-8 text-gray-500 dark:text-gray-400">
+                Статей с таким тегом пока нет.
+              </p>
+            ) : (
+              <ul>
+                {displayPosts.map((post) => {
+                  const { path, date, title, summary, tags } = post
+                  return (
+                    <li key={path} className="py-5">
+                      <article className="flex flex-col space-y-2 xl:space-y-0">
+                        <dl>
+                          <dt className="sr-only">Published on</dt>
+                          <dd className="text-base leading-6 font-medium text-gray-500 dark:text-gray-400">
+                            <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
+                          </dd>
+                        </dl>
+                        <div className="space-y-3">
+                          <div>
+                            <h2 className="text-2xl leading-8 font-bold tracking-tight">
+                              <Link href={`/${path}`} className="text-gray-900 dark:text-gray-100">
+                                {title}
+                              </Link>
+                            </h2>
+                            <div className="flex flex-wrap gap-2 pt-1">
+                              {tags?.map((tag: string) => (
+                                <Tag key={tag} text={tag} />
+                              ))}
+                            </div>
+                          </div>
+                          <div className="prose max-w-none text-gray-500 dark:text-gray-400">
+                            {summary}
                           </div>
                         </div>
-                        <div className="prose max-w-none text-gray-500 dark:text-gray-400">
-                          {summary}
-                        </div>
-                      </div>
-                    </article>
-                  </li>
-                )
-              })}
-            </ul>
+                      </article>
+                    </li>
+                  )
+                })}
+              </ul>
+            )}
             {pagination && pagination.totalPages > 1 && (
               <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
             )}
