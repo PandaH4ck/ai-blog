@@ -48,7 +48,7 @@ const siteMetadata = {
   search: {
     provider: 'kbar',
     kbarConfig: {
-      searchDocumentsPath: `${process.env.BASE_PATH || ''}/search.json`,
+      searchDocumentsPath: '/api/search', // поиск напрямую обращается к нашему API с базой
     },
   },
 }
