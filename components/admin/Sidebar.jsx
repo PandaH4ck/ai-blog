@@ -16,13 +16,16 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 import PostsManagerModal from '@/components/admin/PostsManagerModal'
+import AiChatModal from '@/components/admin/AiChatModal'
 
 const Sidebar = () => {
   const [isPostsOpen, setIsPostsOpen] = useState(false)
+  const [isChatOpen, setIsChatOpen] = useState(false)
 
   return (
     <>
       <aside className="sidebar-full">
+        {/* Button 1: Post management */}
         <Button
           onClick={() => setIsPostsOpen(true)}
           variant="outline"
@@ -32,7 +35,12 @@ const Sidebar = () => {
           <FileText size={20} strokeWidth={1.5} />
         </Button>
 
-        <Button variant="outline" size="icon" className="sidebar-item">
+        <Button
+          onClick={() => setIsChatOpen(true)}
+          variant="outline"
+          size="icon"
+          className="sidebar-item"
+        >
           <StickyNote size={20} strokeWidth={1.5} />
         </Button>
 
@@ -75,7 +83,11 @@ const Sidebar = () => {
         </Dialog>
       </aside>
 
+      {/* Post management modal */}
       <PostsManagerModal isOpen={isPostsOpen} onClose={() => setIsPostsOpen(false)} />
+
+      {/* AI chat modal */}
+      <AiChatModal isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
     </>
   )
 }
